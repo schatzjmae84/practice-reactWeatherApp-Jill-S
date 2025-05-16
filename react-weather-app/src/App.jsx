@@ -1,8 +1,7 @@
-import { useState, useRef } from 'react'
-import { BrowserRouter as Router, Route, Routes } from "react-router"
-import CityList from './components/CityList'
-import './App.css'
-import CityForecast from './components/CityForecast'
+import { BrowserRouter as Router, Route, Routes } from "react-router";
+import CityList from './components/CityList';
+import './App.css';
+import CityForecast from './components/CityForecast';
 
 function App() {
   

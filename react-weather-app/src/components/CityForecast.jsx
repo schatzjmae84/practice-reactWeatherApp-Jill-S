@@ -1,11 +1,18 @@
-import React from "react";
-import { useParams, useRef } from "react-router";
-import weatherData from "../assets/data.json"
+import React, { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router";
+import weather from "../public/data.json" 
 
 export default function CityForecast() {
     const {cityName} = useParams();
-    const weatherInfo = weatherData[cityName];
+    const [weather, setWeather] = useState(null);
     const detailsRef = useRef(null);
+
+
+    useEffect(() => {
+        fetch(`\data.json`)
+        .then((response) => response.json())
+        .then((data) => setWeather(data));
+    }, [cityName]);    
 
     const scrollToDetails = () => {
         detailsRef.current.scrollIntoView({ behavior: "smooth" });
@@ -15,12 +22,13 @@ export default function CityForecast() {
         <div>
             <h1>Weather Information</h1>
             <h2>{cityName}</h2>
-            <p>{weatherInfo.summary}</p>
+            <p>{weather.summary}</p>
             <button onClick={scrollToDetails}>Weather Details</button>
             <div ref={detailsRef}>
-            <p>{weatherInfo.details}</p>
+            <p>{weather.details}</p>
             </div>
         </div>
 
     );
 }
+
