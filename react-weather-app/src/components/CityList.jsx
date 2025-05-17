@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export default function CityList() {
 
-    const cities = ["New York", "London", "Tokyo", "SaintLouis"];
+    const cities = ["NewYork", "London", "Tokyo", "SaintLouis"];
 
     return (
         <div>
